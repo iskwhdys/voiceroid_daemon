@@ -76,18 +76,39 @@ namespace VoiceroidDaemon
         [DataMember]
         public int SpeechTimeout = 0;
 
-        /// <summary>
-        /// 待ち受けアドレス
-        /// </summary>
-        [DataMember]
-        public string ListeningAddress;
+		/// <summary>
+		/// 待ち受けアドレス
+		/// </summary>
+		[DataMember]
+		public string ListeningAddress;
 
-        /// <summary>
-        /// デシリアライズ前に呼ばれる。
-        /// 初期値を代入する。
-        /// </summary>
-        /// <param name="context"></param>
-        [OnDeserializing]
+		/// <summary>
+		/// 待ち受けアドレス
+		/// </summary>
+		[DataMember]
+		public string Speed;
+		/// <summary>
+		/// 待ち受けアドレス
+		/// </summary>
+		[DataMember]
+		public string MiddlePause;
+		/// <summary>
+		/// 待ち受けアドレス
+		/// </summary>
+		[DataMember]
+		public string LongPause;
+		/// <summary>
+		/// 待ち受けアドレス
+		/// </summary>
+		[DataMember]
+		public string SentencePause;
+
+		/// <summary>
+		/// デシリアライズ前に呼ばれる。
+		/// 初期値を代入する。
+		/// </summary>
+		/// <param name="context"></param>
+		[OnDeserializing]
         internal void OnDeserializing(StreamingContext context)
         {
             LoadInitialValues();

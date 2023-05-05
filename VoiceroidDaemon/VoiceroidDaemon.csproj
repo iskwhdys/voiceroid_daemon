@@ -4,6 +4,8 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <Platforms>AnyCPU</Platforms>
     <Version>2.0.1</Version>
+    <BaseOutputPath></BaseOutputPath>
+    <GenerateDocumentationFile>False</GenerateDocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -18,9 +20,17 @@
 
   <ItemGroup>
     <Compile Remove="Injecter\**" />
+    <Compile Remove="wwwroot\新しいフォルダー\**" />
+    <Compile Remove="新しいフォルダー\**" />
     <Content Remove="Injecter\**" />
+    <Content Remove="wwwroot\新しいフォルダー\**" />
+    <Content Remove="新しいフォルダー\**" />
     <EmbeddedResource Remove="Injecter\**" />
+    <EmbeddedResource Remove="wwwroot\新しいフォルダー\**" />
+    <EmbeddedResource Remove="新しいフォルダー\**" />
     <None Remove="Injecter\**" />
+    <None Remove="wwwroot\新しいフォルダー\**" />
+    <None Remove="新しいフォルダー\**" />
   </ItemGroup>
 
   <ItemGroup>

@@ -3,6 +3,8 @@ using System.Reflection;
 using System.Diagnostics;
 using Codeer.Friendly.Windows;
 using Codeer.Friendly.Dynamic;
+using System.Windows.Forms;
+using System.Linq;
 
 namespace VoiceroidDaemon
 {
@@ -32,11 +34,13 @@ namespace VoiceroidDaemon
             dynamic injected_program = app.Type(typeof(Injecter));
             try
             {
+                String key = injected_program.InjectedGetKey();
                 // 認証コードを読み取って返す
-                return injected_program.InjectedGetKey();
+                return key;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Console.WriteLine(ex);
                 return null;
             }
         }
@@ -46,19 +50,20 @@ namespace VoiceroidDaemon
         /// </summary>
         /// <returns></returns>
         private static string InjectedGetKey()
-        {
+        {            
             Assembly[] assemblies = AppDomain.CurrentDomain.GetAssemblies();
-            foreach (Assembly assembly in assemblies)
+			foreach (Assembly assembly in assemblies)
             {
-                if (assembly.GetName().Name == "AI.Framework.App")
-                {
-                    Type type = assembly.GetType("AI.Framework.AppFramework");
-                    var property = type.GetProperty("Current");
-                    dynamic current = property.GetValue(type);
-                    return (string)current.AppSettings.LicenseKey;
+                // if (assembly.GetName().Name == "AI.Framework.App")
+                if (assembly.GetName().Name == "AI.Talk.Editor.Core"){
+					Type type = assembly.GetType("AI.Talk.Editor.Settings.AppSettings");
+					var property = type.GetProperty("Current");
+					dynamic current = property.GetValue(type);
+                    return (string)current.LicenseKey;
                 }
             }
             return null;
+            
         }
     }
 }
