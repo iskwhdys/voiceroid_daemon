@@ -21,16 +21,12 @@
   <ItemGroup>
     <Compile Remove="Injecter\**" />
     <Compile Remove="wwwroot\新しいフォルダー\**" />
-    <Compile Remove="新しいフォルダー\**" />
     <Content Remove="Injecter\**" />
     <Content Remove="wwwroot\新しいフォルダー\**" />
-    <Content Remove="新しいフォルダー\**" />
     <EmbeddedResource Remove="Injecter\**" />
     <EmbeddedResource Remove="wwwroot\新しいフォルダー\**" />
-    <EmbeddedResource Remove="新しいフォルダー\**" />
     <None Remove="Injecter\**" />
     <None Remove="wwwroot\新しいフォルダー\**" />
-    <None Remove="新しいフォルダー\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -50,6 +46,11 @@
     <Content Remove="wwwroot\css\bootstrap.css.map" />
     <Content Remove="wwwroot\css\bootstrap.min.css.map" />
     <Content Remove="wwwroot\favicon.ico" />
+    <Content Remove="wwwroot\js\要素のテキストを読上.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\js\要素のテキストを読上.js" />
   </ItemGroup>
 
   <ItemGroup>
