@@ -1,0 +1,16 @@
+{
+  "name": "PostVoiceroid",
+  "action": {
+    "default_title": "PostVoiceroid",
+    "default_icon": "icon.png"
+  },
+
+  "background": {
+    "service_worker": "background.js"
+  },
+
+  "manifest_version": 3,
+  "version": "0.1",
+  "description": "voiceroid_daemon用POST拡張機能",
+  "permissions": [ "activeTab", "scripting" ]
+}
