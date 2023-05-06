@@ -119,6 +119,19 @@ namespace VoiceroidDaemon {
 			}
 		}
 
+		private void LoadAndSettingParameter() {
+
+			Config = Configuration.Load(ConfigFilePath, out bool not_exists);
+
+			AitalkWrapper.Parameter.CurrentSpeakerName = Config.VoiceName;
+
+			AitalkWrapper.Parameter.VoiceSpeed = Config.Speed;
+			AitalkWrapper.Parameter.PauseMiddle = Config.MiddlePause;
+			AitalkWrapper.Parameter.PauseLong = Config.LongPause;
+			AitalkWrapper.Parameter.PauseSentence = Config.SentencePause;
+			AitalkWrapper.Parameter.MasterVolume = Config.MasterVolume;
+		}
+
 		/// <summary>
 		/// HTTPサーバーを起動するモード
 		/// </summary>
@@ -154,16 +167,10 @@ namespace VoiceroidDaemon {
 				// ボイスライブラリを読み込む
 				AitalkWrapper.LoadVoice(Config.VoiceDbName);
 
-				// 話者を設定する
-				AitalkWrapper.Parameter.CurrentSpeakerName = Config.VoiceName;
+				LoadAndSettingParameter();
 
-				AitalkWrapper.Parameter.VoiceSpeed = double.Parse(Config.Speed);
-				AitalkWrapper.Parameter.PauseMiddle = int.Parse(Config.MiddlePause);
-				AitalkWrapper.Parameter.PauseLong = int.Parse(Config.LongPause);
-				AitalkWrapper.Parameter.PauseSentence = int.Parse(Config.SentencePause);
-
-				// 処理を別スレッドで実行する
-				Task task = Task.Factory.StartNew(Run);
+			// 処理を別スレッドで実行する
+			Task task = Task.Factory.StartNew(Run);
 
 				// トレイアイコンを作成する
 				// アイコンはVOICEROIDエディタのものを使用するが、ダメならこの実行ファイルのものを使用する

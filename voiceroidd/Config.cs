@@ -83,25 +83,30 @@ namespace VoiceroidDaemon
 		public string ListeningAddress;
 
 		/// <summary>
-		/// 待ち受けアドレス
+		/// 
 		/// </summary>
 		[DataMember]
-		public string Speed;
+		public double Speed = 1.0;
 		/// <summary>
-		/// 待ち受けアドレス
+		/// 
 		/// </summary>
 		[DataMember]
-		public string MiddlePause;
+		public int MiddlePause = 150;
 		/// <summary>
-		/// 待ち受けアドレス
+		/// 
 		/// </summary>
 		[DataMember]
-		public string LongPause;
+		public int LongPause = 370;
 		/// <summary>
-		/// 待ち受けアドレス
+		/// 
 		/// </summary>
 		[DataMember]
-		public string SentencePause;
+		public int SentencePause = 800;
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public double MasterVolume = 1.0;
 
 		/// <summary>
 		/// デシリアライズ前に呼ばれる。
